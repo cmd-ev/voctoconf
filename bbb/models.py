@@ -177,7 +177,7 @@ class Room(models.Model):
 
             params['guest'] = 'false' if as_moderator else 'true'
             params['redirect'] = "true"
-            params['joinViaHtml5'] = "false"
+            params['joinViaHtml5'] = "true"
             return bbb_apiurl(self.server.url, self.server.get_secret(), "join", params)
 
     def is_running(self):
