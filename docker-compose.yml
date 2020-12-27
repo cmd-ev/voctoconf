@@ -5,7 +5,7 @@ services:
     command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - django_static:/app/static
-      - _db.sqlite3:/app/_db.sqlite3
+      - ./_db.sqlite3:/app/_db.sqlite3
     labels:
       traefik.enable: "true"
       traefik.http.routers.appapp.rule: "Host(`virtual.piandmore.de`)"
