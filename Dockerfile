@@ -37,9 +37,6 @@ EXPOSE 8000
 # Add any custom, static environment variables needed by Django or your settings file here:
 #ENV DJANGO_SETTINGS_MODULE=my_project.settings.deploy
 
-# Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run):
-RUN DATABASE_URL=none python manage.py collectstatic --noinput
-
 # entrypoint
 RUN chmod 755 /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

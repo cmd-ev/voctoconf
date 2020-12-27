@@ -2,7 +2,7 @@ version: '3.7'
 services:
   app:
     build: .
-    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn voctoconf.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - django_static:/app/static
       - ./_db.sqlite3:/app/_db.sqlite3
@@ -15,6 +15,9 @@ services:
       traefik.http.routers.appappsecure.tls.certresolver: "le"
       traefik.http.routers.appappsecure.entrypoints: "websecure"
       traefik.http.routers.appappsecure.middlewares: "add-sts-with-subdomains@file"
+    environment:
+      DJANGO_MANAGEPY_MIGRATE: "on"
+      DJANGO_MANAGEPY_COLLECTSTATIC: "on"
 #  nginx:
 #    build: nginx
 #    volumes:
