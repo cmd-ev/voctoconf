@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - django_static:/app/static
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.appapp.rule: "Host(`virtual.piandmore.de`)"
+      traefik.http.routers.appapp.entrypoints: "web"
+      traefik.http.routers.appapp.middlewares: "redirect-to-https@file, add-sts-with-subdomains@file"
+      traefik.http.routers.appappsecure.rule: "Host(`virtual.piandmore.de`)"
+      traefik.http.routers.appappsecure.tls.certresolver: "le"
+      traefik.http.routers.appappsecure.entrypoints: "websecure"
+      traefik.http.routers.appappsecure.middlewares: "add-sts-with-subdomains@file"
+#  nginx:
+#    build: nginx
+#    volumes:
+#      - app_static:/app/static
+#      - ./media:/app/media
+#    labels:
+#      traefik.enable: "true"
+#      traefik.http.routers.appstatic.rule: "Host(`virtual.piandmore.de`) && PathPrefix(`/static`)"
+#      traefik.http.routers.appstatic.entrypoints: "web"
+#      traefik.http.routers.appstatic.middlewares: "redirect-to-https@file, add-sts-with-subdomains@file"
+#      traefik.http.routers.appstaticsecure.rule: "Host(`virtual.piandmore.de`) && PathPrefix(`/static`)"
+#      traefik.http.routers.appstaticsecure.tls.certresolver: "le"
+#      traefik.http.routers.appstaticsecure.entrypoints: "websecure"
+#      traefik.http.routers.appstaticsecure.middlewares: "add-sts-with-subdomains@file"
+
+volumes:
+  django_static:
+

@@ -1,0 +1,7 @@
+_db.sqlite3
+.git
+.github
+.gitignore
+_bbb_secrets
+static
+venv

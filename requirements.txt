@@ -6,3 +6,7 @@ psycopg2
 markdown
 channels
 channels_redis
+requests
+bleach
+Pillow
+gunicorn
