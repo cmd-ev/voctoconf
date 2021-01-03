@@ -1,12 +1,21 @@
 import os
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+
+# False if not in os.environ
+DEBUG = env('DEBUG')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # defaults
-DEFAULT_SECRET_KEY = 'lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337'
-SECRET_KEY = DEFAULT_SECRET_KEY
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
 PAGE_LIVE = True
 
 DOMAIN = "localhost"
@@ -127,23 +136,24 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('redis', 6379)],
         },
     },
 }
 
-try:
-    from .local_settings import *
-except:
-    print("#############")
-    print("## WARNING ##")
-    print("#############")
-    print("")
-    print("NO LOCAL CONFIGURATION FOUND")
-    print("USING DEV DEFAULTS")
-    print("DONT RUN THIS ON THE INTERWEBZ")
-    print("")
-
-if not DEBUG and SECRET_KEY == DEFAULT_SECRET_KEY:
-    print("LOL NOPE")
-    sys.exit(1)
+#try:
+#    from .local_settings import *
+#except:
+#    print("#############")
+#    print("## WARNING ##")
+#    print("#############")
+#    print("")
+#    print("NO LOCAL CONFIGURATION FOUND")
+#    print("USING DEV DEFAULTS")
+#    print("DONT RUN THIS ON THE INTERWEBZ")
+#    print("")
+#
+#if not DEBUG and SECRET_KEY == DEFAULT_SECRET_KEY:
+#    print("LOL NOPE")
+#    sys.exit(1)
+#

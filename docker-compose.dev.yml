@@ -4,10 +4,17 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - django_static:/app/static
+      - django_static:/app/_static
       - .:/app
     ports:
       - 8000:8000
+    networks:
+      - default
+    environment:
+      SECRET_KEY: 'lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337'
+      DEBUG: "true"
+  redis:
+    image: redis:latest
     networks:
       - default
 

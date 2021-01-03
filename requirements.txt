@@ -10,3 +10,4 @@ requests
 bleach
 Pillow
 gunicorn
+django-environ
