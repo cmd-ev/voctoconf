@@ -3,5 +3,4 @@ _db.sqlite3
 .github
 .gitignore
 _bbb_secrets
-static
 venv
