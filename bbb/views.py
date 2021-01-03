@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from .models import Room
 from authstuff.names import name_required
 from django.http import HttpResponse, Http404
+from django.conf import settings
 import json
 
 def get_room(roomid):
@@ -23,8 +24,10 @@ def roomview(request, roomid):
 
     meeting = room.join(request, name=request.username)
 
+    noframe = settings.BBB_NOFRAME
+
     if meeting:
-        if request.GET.get("noframe"):
+        if (not room.record or request.GET.get("acceptrecording")) and (noframe or request.GET.get("noframe")):
             return redirect(meeting)
         elif room.record and not request.GET.get("acceptrecording") and not request.user.username == "stream":
             return render(request, "bbb/acceptrecording.html", {'room': room})

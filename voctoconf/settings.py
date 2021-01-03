@@ -16,9 +16,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # defaults
 SECRET_KEY = env('SECRET_KEY')
 
+# this setting is used to disable public pages
 PAGE_LIVE = True
 
-DOMAIN = "localhost"
+# To properly embed BBB in iframes, BBB must explicitly use SameSite=None for its session cookies. Otherwise, modern browsers cannot access BBB anymore. Workaround: we do not use frames and redirect users directly to BBB.
+BBB_NOFRAME = True
+
+BASE_URL = "http://localhost:8000/"
 ALLOWED_HOSTS = ["*"]
 
 BBB_SECRETS_DIR = os.path.join(BASE_DIR, "_bbb_secrets")

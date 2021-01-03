@@ -219,7 +219,7 @@ class Room(models.Model):
         params['meta_foobar'] = 'fnord'
         params['autoStartRecording'] = "true"
         params['allowStartStopRecording'] = "false"
-        params['logoutURL'] = "https://%s/bbb/%s?ended=1" % (settings.DOMAIN, self.id)
+        params['logoutURL'] = "%sbbb/%s?ended=1" % (settings.BASE_URL, self.id)
         logo = self.get_logo()
         if logo:
             params['logo'] = logo.url
