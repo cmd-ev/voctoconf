@@ -16,13 +16,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # defaults
 SECRET_KEY = env('SECRET_KEY')
 
+# conference name
+CONFERENCE_NAME = env('CONFERENCE_NAME', default='TEST CONFERENCE')
+
 # this setting is used to disable public pages
-PAGE_LIVE = True
+PAGE_LIVE = env('PAGE_LIVE', default=DEBUG)
 
 # To properly embed BBB in iframes, BBB must explicitly use SameSite=None for its session cookies. Otherwise, modern browsers cannot access BBB anymore. Workaround: we do not use frames and redirect users directly to BBB.
 BBB_NOFRAME = True
 
-BASE_URL = "http://localhost:8000/"
+BASE_URL = env('BASE_URL', default="http://localhost:8000/")
 ALLOWED_HOSTS = ["*"]
 
 BBB_SECRETS_DIR = os.path.join(BASE_DIR, "_bbb_secrets")
@@ -90,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'voctoconf.context_processors.add_conference_metadata',
             ],
         },
     },
