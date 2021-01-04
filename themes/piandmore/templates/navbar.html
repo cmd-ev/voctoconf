@@ -29,7 +29,9 @@
 	    </li>
 	    {% if request.user.is_authenticated %}
 	    <li class="nav-item">
-		<i class="fa fa-sm fa-user"></i> {{ request.user.username }}
+		<span class="navbar-text">
+		    <i class="fa fa-sm fa-user"></i> {{ request.user.username }}
+		</span>
 	    </li>
 	    <li class="nav-item">
 		<a class="nav-link" href="/logout">
