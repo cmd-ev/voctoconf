@@ -1,0 +1,45 @@
+{% load static compress %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block fulltitle %}{% block title %}{% endblock %}{{ conference_name }}{% endblock %}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="robots" content="index,follow" />
+		<meta name="generator" content="voctoconf modified for Pi and More" />
+		<link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+		<meta name="http-equiv" content="text/javascript" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!-- <link rel="stylesheet" type="text/css" href="{% static "styles/bootstrap.min.css" %}" /> -->
+		<!-- Bootstrap -->
+		{% compress css %}
+		<link rel="stylesheet" type="text/x-scss" href="{% static 'css/frosch.scss' %}">
+		{% endcompress %}
+		<!-- <link rel="stylesheet" type="text/css" href="{% static "styles/index.css" %}" /> -->
+		<link rel="stylesheet" type="text/css" href="{% static "styles/fontawesome/css/fontawesome.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "styles/fontawesome/css/solid.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "styles/fontawesome/css/brands.min.css" %}" />
+		{% block assets %}{% endblock %}
+	</head>
+
+	<body class="{% block body_class %}{% endblock %}">
+
+	    {% block navbar %}{% include 'navbar.html' %}{% endblock %}
+
+	    
+		<form method="post" action="{% url 'set_language' %}" id="langform" class="d-none">
+			{% csrf_token %}
+			<input name="next" type="hidden" value="" />
+			<input name="language" type="hidden" value="{% if LANGUAGE_CODE == "de" %}en{% else %}de{% endif %}" />
+		</form>
+
+
+			{% block content %}This page intentionally left blank. Techniker ist informiert.{% endblock %}
+
+		{% block footer %}
+			{% include "footer.html" %}
+		{% endblock %}
+
+		{% block scripts %}{% endblock %}
+	</body>
+</html>

@@ -11,3 +11,5 @@ bleach
 Pillow
 gunicorn
 django-environ
+django-compressor
+django-libsass

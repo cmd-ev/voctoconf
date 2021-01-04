@@ -1,0 +1,51 @@
+{% load i18n static %}
+
+{% get_available_languages as LANGS %}
+{% get_current_language as LANG %}
+
+<nav id="topnav" class="navbar navbar-dark bg-dark navbar-expand-md {% if subnav %}has-subnav{% else %}mb-3{% endif %}" role="navigation">
+    <a class="navbar-brand" href="{% url 'eventoverview' %}"><img src="{% static 'images/piandmore.png' %}" alt="Pi and More" style="height: 40px" > <span class="navbar-brand-text">Pi and More — Virtual Venue</span></a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"> 
+	    <li class="nav-item">
+	        <a class="nav-link" href="https://piandmore.de">Back to piandmore.de</a>
+	    </li>
+
+	</ul>
+	<ul class="navbar-nav ml-auto">
+	    <li class="nav-item">
+		<a class="nav-link" href="#" onclick="document.getElementById('langform').submit();">
+                    {% if LANGUAGE_CODE == "de" %}
+                    <img src="{% static "images/us.png" %}" alt="en"> English
+                    {% else  %}
+                    <img src="{% static "images/de.png" %}" alt="en"> Deutsch
+                    {% endif %}
+		</a>
+	    </li>
+	    {% if request.user.is_authenticated %}
+	    <li class="nav-item">
+		<i class="fa fa-sm fa-user"></i> {{ request.user.username }}
+	    </li>
+	    <li class="nav-item">
+		<a class="nav-link" href="/logout">
+                    <i class="fa fa-sm fa-sign-out-alt"></i>
+                    {% if LANGUAGE_CODE == "de" %}Abmelden{% else %}Sign Out{% endif %}
+		</a>
+	    </li>
+	    {% else %}
+	    <li class="nav-item">
+		<a class="nav-link" href="/login">
+                    <i class="fa fa-sm fa-sign-in-alt"></i>
+                    {% if LANGUAGE_CODE == "de" %}Anmelden{% else %}Sign In{% endif %}
+		</a>
+	    </li>
+	    {% endif %}
+	</ul>
+    </div>
+</nav>
+

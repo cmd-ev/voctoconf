@@ -18,7 +18,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # conference name
 CONFERENCE_NAME = env('CONFERENCE_NAME', default='TEST CONFERENCE')
-THEME = env('THEME', default="froscon")
+THEME = env('THEME', default="piandmore")
 
 # this setting is used to disable public pages
 PAGE_LIVE = env('PAGE_LIVE', default=DEBUG)
@@ -38,6 +38,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, "themes", THEME, "static"),
+]
+STATICFILES_FINDERS = [
+    'compressor.finders.CompressorFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 MEDIA_URL = '/media/'
@@ -66,7 +71,8 @@ INSTALLED_APPS = [
     'eventpage',
     'helpers',
     'authstuff',
-    'staticpages'
+    'staticpages',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +159,21 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+LIBSASS_PRECISION = 8
+
+LIBSASS_OUTPUT_STYLE = 'compressed'
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+]
+
+COMPRESS_CSS_HASHING_METHOD = 'mtime'
+
 
 #try:
 #    from .local_settings import *

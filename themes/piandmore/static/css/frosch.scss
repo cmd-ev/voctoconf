@@ -1,0 +1,163 @@
+$font-family-sans-serif: LatoWeb,Lato,sans-serif;
+$border-radius: 0px;
+$border-radius-lg: 0px;
+$border-radius-sm: 0px;
+
+$raspberry: #c51a4a;
+$leaf: #6cc04a;
+$raspberry-light: lighten($raspberry, 46%);
+$raspberry-dark: darken($raspberry, 18%);
+$leaf-light: lighten($leaf, 20%);
+$info-light: #d9edf7;
+$info: darken($info-light, 50%);
+$primary: #322698;
+$theme-colors: (
+    "raspberry": $raspberry,
+    "raspberry-light": $raspberry-light,
+    "raspberry-dark": $raspberry-dark,
+    "info-light": $info-light
+);
+
+
+
+@import "../../lib/bootstrap/scss/functions";
+@import "../../lib/bootstrap/scss/variables";
+
+$navbar-light-active-color:         $primary;
+$navbar-nav-link-padding-x:         1rem;
+
+$body-bg: $gray-200;
+$jumbotron-bg: $white ;//$gray-300;
+
+@import "../../lib/bootstrap/scss/mixins";
+@import "../../lib/bootstrap/scss/root";
+@import "../../lib/bootstrap/scss/reboot";
+@import "../../lib/bootstrap/scss/type";
+@import "../../lib/bootstrap/scss/images";
+@import "../../lib/bootstrap/scss/code";
+@import "../../lib/bootstrap/scss/grid";
+@import "../../lib/bootstrap/scss/tables";
+@import "../../lib/bootstrap/scss/forms";
+@import "../../lib/bootstrap/scss/buttons";
+@import "../../lib/bootstrap/scss/transitions";
+@import "../../lib/bootstrap/scss/dropdown";
+@import "../../lib/bootstrap/scss/button-group";
+@import "../../lib/bootstrap/scss/input-group";
+@import "../../lib/bootstrap/scss/custom-forms";
+@import "../../lib/bootstrap/scss/nav";
+@import "../../lib/bootstrap/scss/navbar";
+@import "../../lib/bootstrap/scss/card";
+@import "../../lib/bootstrap/scss/breadcrumb";
+@import "../../lib/bootstrap/scss/pagination";
+@import "../../lib/bootstrap/scss/badge";
+@import "../../lib/bootstrap/scss/jumbotron";
+@import "../../lib/bootstrap/scss/alert";
+@import "../../lib/bootstrap/scss/progress";
+@import "../../lib/bootstrap/scss/media";
+@import "../../lib/bootstrap/scss/list-group";
+@import "../../lib/bootstrap/scss/close";
+@import "../../lib/bootstrap/scss/modal";
+@import "../../lib/bootstrap/scss/tooltip";
+@import "../../lib/bootstrap/scss/popover";
+@import "../../lib/bootstrap/scss/carousel";
+@import "../../lib/bootstrap/scss/utilities";
+@import "../../lib/bootstrap/scss/print";
+
+@import "base.scss";
+@import "navbar.scss";
+@import "welcome.scss";
+// @import "../../visitorregistration/static/ticket.scss";
+// @import "subnav/archive.scss";
+@import "multi-item-carousel.scss";
+// @import "../../staffregistration/static/staffregistration.scss";
+// @import "../../callforcontributions/static/event-table.scss";
+// @import "cards/partners.scss";
+// @import "cards/newsletter.scss";
+// @import "cards/previous-conference.scss";
+// @import "../../news/static/news/article.scss";
+@import "fileinput.scss";
+@import "public-schedule.scss";
+
+.userthumbnail {
+    border-radius: 5%;
+}
+
+.card-header.with-background {
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 5rem;
+}
+
+.nav-inline {
+    .nav-link {
+        display: inline;
+    }
+
+    display: block;
+    li {
+        margin-top: 1rem;
+    }
+}
+
+.schedule-scroll-horiz {
+    background-color: $white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.events.table {
+    border-top: 0;
+    th {
+        border-top: 0;
+    }
+}
+
+.editlink {
+    color: red;
+    font-size: 50%;
+    vertical-align: top;
+}
+
+.editlink:hover {
+    text-decoration: none;
+}
+
+.card-img-top-overlay {
+    left: 1em;
+    bottom: 1em;
+    width: 25%;
+    position: absolute;
+}
+
+.gallery-more-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    img {
+        filter: blur(3px) grayscale(1) opacity(50%);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+    }
+    a {
+        z-index: 1;
+    }
+}
+
+.gallery {
+    text-align: center;
+    a, img {
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+    }
+    div {
+        padding: 0;
+        margin: 0;
+    }
+}

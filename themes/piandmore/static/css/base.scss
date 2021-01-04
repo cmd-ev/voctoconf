@@ -1,0 +1,24 @@
+$footer-height: 3em;
+
+#footnav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+    background-color: $gray-600;
+    text-align: center;
+    color: $white;
+    padding-top: 0.5em;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: $footer-height;
+}
+
+.dropdown-login-form {
+    min-width: 350px;
+}

@@ -1,0 +1,35 @@
+.public-schedule {
+ .scheduleable a, .scheduleable a:active, .scheduleable a:hover {
+     color: inherit;
+ }
+ .grid-container {
+     padding-left: 0px !important;
+     padding-right: 0px  !important;
+     //min-width: 728px;
+ }
+ .scheduleable.colspan {
+     opacity: 0.5;
+     overflow: hidden !important;
+     z-index: 9;
+ }
+ .scheduleable.colspan .time, .scheduleable.colspan .extrainfo {
+     display: none;
+ }
+
+ .scheduleable.colspan .title {
+     position: absolute;
+     bottom: 0;
+     text-align: center;
+     width: 100%;
+     font-size: 3em;
+     color: #fff;
+ }
+ .card-img-bottom {
+     position: relative;
+ }
+ .horiz-scroll-indicator {
+     position: absolute;
+     right: 1em;
+     top: 3em;
+ }
+}
