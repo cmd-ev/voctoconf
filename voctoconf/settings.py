@@ -18,6 +18,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # conference name
 CONFERENCE_NAME = env('CONFERENCE_NAME', default='TEST CONFERENCE')
+THEME = env('THEME', default="froscon")
 
 # this setting is used to disable public pages
 PAGE_LIVE = env('PAGE_LIVE', default=DEBUG)
@@ -36,6 +37,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "themes", THEME, "static"),
 ]
 
 MEDIA_URL = '/media/'
@@ -84,7 +86,10 @@ ROOT_URLCONF = 'voctoconf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'themes', THEME, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
