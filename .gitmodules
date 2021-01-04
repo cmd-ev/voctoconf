@@ -1,3 +1,6 @@
 [submodule "themes/piandmore/lib/bootstrap"]
 	path = themes/piandmore/lib/bootstrap
 	url = https://github.com/twbs/bootstrap.git
+[submodule "themes/piandmore/static/lib/bootstrap"]
+	path = themes/piandmore/static/lib/bootstrap
+	url = https://github.com/twbs/bootstrap.git
