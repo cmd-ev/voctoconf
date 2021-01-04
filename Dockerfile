@@ -31,6 +31,11 @@ RUN pip install -r requirements.txt
 # add everything
 ADD . /app
 
+# set up crontab
+COPY crontab /etc/crontab
+RUN chmod 0644 /etc/crontab && crontab /etc/crontab
+RUN chmod 0755 /app/cron.sh
+
 # listen on this port
 EXPOSE 8000
 

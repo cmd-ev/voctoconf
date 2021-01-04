@@ -2,6 +2,7 @@ version: '3.7'
 services:
   app:
     build: .
+    image: voctoconf
     restart: always
     command: gunicorn voctoconf.wsgi:application --bind 0.0.0.0:8000
     volumes:
@@ -53,6 +54,19 @@ services:
       traefik.http.routers.voctoconfstaticsecure.tls.certresolver: "le"
       traefik.http.routers.voctoconfstaticsecure.entrypoints: "websecure"
       traefik.http.routers.voctoconfstaticsecure.middlewares: "add-sts-with-subdomains@file"
+  cron:
+    image: voctoconf
+    restart: always
+    command: '/app/cron.sh'
+    volumes:
+      - django_static:/app/_static
+      - ./_db.sqlite3:/app/_db.sqlite3
+      - ./_bbb_secrets:/app/_bbb_secrets
+      - '/etc/localtime:/etc/localtime:ro'
+    networks:
+      - default
+    env_file:
+      - prod.env  
 
 volumes:
   django_static:

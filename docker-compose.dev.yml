@@ -2,6 +2,7 @@ version: '3.7'
 services:
   app:
     build: .
+    image: voctoconf
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - django_static:/app/_static
@@ -17,7 +18,19 @@ services:
     image: redis:latest
     networks:
       - default
-
+  cron:
+    image: voctoconf
+    command: '/app/cron.sh'
+    volumes:
+      - django_static:/app/_static
+      - .:/app
+      - '/etc/localtime:/etc/localtime:ro'
+    networks:
+      - default
+    environment:
+      SECRET_KEY: 'lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337lolinsecure1337'
+      DEBUG: "true"
+      
 volumes:
   django_static:
 
