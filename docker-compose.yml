@@ -24,6 +24,8 @@ services:
     environment:
       DJANGO_MANAGEPY_MIGRATE: "on"
       DJANGO_MANAGEPY_COLLECTSTATIC: "on"
+    env_file:
+      - prod.env
   redis:
     image: redis:latest
     restart: always

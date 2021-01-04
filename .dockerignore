@@ -3,4 +3,5 @@ _db.sqlite3
 .github
 .gitignore
 _bbb_secrets
+prod.env
 venv
