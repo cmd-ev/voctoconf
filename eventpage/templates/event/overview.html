@@ -8,8 +8,10 @@
 	{% include "event/overview_announcements.html" %}
 	{% endif %}
 
+        {% if lecture_rooms %}
 	{% include "event/overview_events.html" %}
-	<hr />
+        <hr />
+        {% endif %}
 	<div class="row">
 		<div class="col-12 col-sm-6 py-1">
 			<a class="btn btn-primary btn-lg w-100" href="/chat/lobby" role="button">
@@ -25,6 +27,11 @@
 	<hr />
 	{% if workshops %}
 	{% include "event/overview_workshops.html" %}
+	<hr />
+	{% endif %}
+	{% if discussion_rooms %}
+	{% include "event/overview_discussions.html" %}
+	<hr />
 	{% endif %}
 	{% if hangouts %}
 	{% include "event/overview_hangouts.html" %}

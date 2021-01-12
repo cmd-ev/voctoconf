@@ -1,9 +1,9 @@
 {% load is_bbb_mod %}
 
-<h1 class="pt-2"><i class="fa fa-chalkboard-teacher"></i> {% if LANGUAGE_CODE == "de" %}Vorträge{% else %}Lectures{% endif %}</h1>
+<h1 class="pt-2"><i class="fa fa-comments"></i> {% if LANGUAGE_CODE == "de" %}Diskussionen{% else %}Discussions{% endif %}</h1>
 
 <div class="row">
-    {% for room in lecture_rooms %}
+    {% for room in discussion_rooms %}
     {% if room.bbb or room.stream %}
     <div class="col-sm-{{ room.view_size }} col-12 py-3 d-flex flex-column">
 
@@ -20,9 +20,9 @@
                 </a>
                 {% else %}
                 {% if LANGUAGE_CODE == "de" %}
-                Zurzeit läuft kein Vortrag in diesem Saal.
+                Zurzeit läuft keine Diskussion in diesem Saal.
                 {% else %}
-                Currently there is no lecture in this room.
+                Currently there is no discussion in this room.
                 {% endif %}
                 {% endif %}
             </h5>

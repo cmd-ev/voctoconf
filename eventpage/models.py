@@ -20,6 +20,13 @@ class Announcement(models.Model):
         return self.ident
 
 class Room(models.Model):
+    ROOM_FUNCTION_TALKS = 0
+    ROOM_FUNCTION_DISCUSSIONS = 1
+    ROOM_FUNCTION_CHOICES = (
+        (ROOM_FUNCTION_TALKS, "Talks"),
+        (ROOM_FUNCTION_DISCUSSIONS, "Discussions"),
+    )
+    
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=35, blank=True, null=True)
     bbb = models.OneToOneField(bbb.models.Room, blank=True, null=True, related_name='schedule_room', on_delete=models.SET_NULL)
@@ -28,6 +35,7 @@ class Room(models.Model):
     view_size = models.IntegerField(default=4)
     order = models.IntegerField(default=9000)
     hide = models.BooleanField(default=False)
+    function = models.IntegerField(default=ROOM_FUNCTION_TALKS, choices=ROOM_FUNCTION_CHOICES)
 
     def link(self):
         if self.stream:

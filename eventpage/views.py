@@ -11,7 +11,8 @@ import re
 
 def event_overview(request):
     context = {}
-    context['event_rooms'] = EventRoom.objects.filter(hide=False).order_by('order')
+    context['lecture_rooms'] = EventRoom.objects.filter(hide=False, function=EventRoom.ROOM_FUNCTION_TALKS).order_by('order')
+    context['discussion_rooms'] = EventRoom.objects.filter(hide=False, function=EventRoom.ROOM_FUNCTION_DISCUSSIONS).order_by('order')
     context['partners'] = partners.models.Partner.objects.filter(hide=False, bbb__isnull=False).order_by("order")
     context['announcements'] = Announcement.objects.filter(hide=False).order_by('-id')
     context['hangouts'] = bbb.models.Room.objects.filter(hangout_room=True)
