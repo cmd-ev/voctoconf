@@ -33,6 +33,13 @@
 		    <i class="fa fa-sm fa-user"></i> {{ request.user.username }}
 		</span>
 	    </li>
+	    {% if request.user.is_staff %}
+	    <li class="nav-item">
+		<a class="nav-link" href="{% url 'admin:index' %}">
+		    <i class="fa fa-sm fa-tools"></i> Admin
+		</a>
+	    </li>
+	    {% endif %}
 	    <li class="nav-item">
 		<a class="nav-link" href="/logout">
                     <i class="fa fa-sm fa-sign-out-alt"></i>
