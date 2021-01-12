@@ -22,7 +22,8 @@ if settings.DEBUG:
     urlpatterns += static('/media', document_root=settings.MEDIA_ROOT)
 
 urlpatterns += landingpage.urls.urlpatterns
-urlpatterns += chat.urls.urlpatterns
+if settings.CHAT_ENABLED:
+    urlpatterns += chat.urls.urlpatterns
 urlpatterns += bbb.urls.urlpatterns
 urlpatterns += authstuff.urls.urlpatterns
 urlpatterns += eventpage.urls.urlpatterns
