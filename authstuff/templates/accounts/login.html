@@ -4,20 +4,26 @@
 {% block content %}
 
 <main class="container pt-2">
-  <h2><i class="fa fa-sign-in-alt"></i> {% if LANGUAGE_CODE == "de" %}Event Anmeldung{% else %}Event Login{% endif %}</h2>
+  <h2><i class="fa fa-sign-in-alt"></i> {% if LANGUAGE_CODE == "de" %}Benutzeranmeldung{% else %}User Login{% endif %}</h2>
 
   {% if LANGUAGE_CODE == "de" %}
   <p>
-    Hier kannst du dich mit existierenden Anmeldedaten für unser Online-Event anmelden.<br/>
-    Solltest du noch keine Anmeldedaten besitzen kannst du dich <a href="/register">hier</a> registrieren.<br/>
+      Hier kannst du dich mit existierenden Anmeldedaten für unser Online-Event anmelden.<br/>
+      {% if settings.SIGNUP_ENABLED %}
+      Solltest du noch keine Anmeldedaten besitzen kannst du dich <a href="/register">hier</a> registrieren.<br/>
+      {% else %}
+      {% endif %}
     <br/>
     Eine Anmeldung ist nicht verpflichtend, diese wird nur benötigt wenn du den 'guest-'-Präfix von deinem Namen
     entfernen willst, oder du für einen BigBlueButton-Raum Moderatoren-Rechte bekommen sollst.
   </p>
   {% else %}
   <p>
-    Here you can login to our online-event using existing credentials.<br/>
-    If you don't already have an account you can register right <a href="/register">here</a>.<br/>
+      Here you can login to our online-event using existing credentials.<br/>
+      {% if settings.SIGNUP_ENABLED %}
+      If you don't already have an account you can register right <a href="/register">here</a>.<br/>
+      {% else %}
+      {% endif %}
     <br/>
     A login is not mandatory and only really is required if you want to get rid of the 'guest-' prefix in your
     name, or if you should receive moderator permissions for a BigBlueButton-room.

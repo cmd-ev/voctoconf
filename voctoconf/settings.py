@@ -23,6 +23,7 @@ THEME = env('THEME', default="piandmore")
 # this setting is used to disable public pages
 PAGE_LIVE = env('PAGE_LIVE', default=DEBUG)
 CHAT_ENABLED = env('CHAT_ENABLED', default=False)
+SIGNUP_ENABLED = env('SIGNUP_ENABLED', default=False)
 
 # To properly embed BBB in iframes, BBB must explicitly use SameSite=None for its session cookies. Otherwise, modern browsers cannot access BBB anymore. Workaround: we do not use frames and redirect users directly to BBB.
 BBB_NOFRAME = True
