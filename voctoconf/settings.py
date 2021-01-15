@@ -6,7 +6,7 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 # reading .env file
-environ.Env.read_env()
+#environ.Env.read_env()
 
 # False if not in os.environ
 DEBUG = env('DEBUG')
@@ -81,6 +81,23 @@ LOGGING = {
         }
     },
 }
+
+# alternate logging - this yields debug output
+#LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+#    'handlers': {
+#        'console': {
+#            'class': 'logging.StreamHandler',
+#        },
+#    },
+#    'loggers': {
+#        'django': {
+#            'handlers': ['console'],
+#            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#        },
+#    },
+#}
 
 # Application definition
 INSTALLED_APPS = [
