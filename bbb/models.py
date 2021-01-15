@@ -82,6 +82,14 @@ class Room(models.Model):
     lock_shared_notes = models.BooleanField("Lock shared notes", null=False, blank=False, default=False)
     lock_layout = models.BooleanField("Lock layout", null=False, blank=False, default=False)
 
+    skip_echo_test = models.BooleanField("Skip Echo Test", null=False, blank=False, default=False)
+    auto_share_webcam = models.BooleanField("Auto Share Webcam", null=False, blank=False, default=False)
+    hide_presentation = models.BooleanField("Hide Presentation", null=False, blank=False, default=False)
+    listen_only_mode = models.BooleanField("Allow users to join in listen-only mode", null=False, blank=False, default=True)
+    auto_swap_layout = models.BooleanField("Start with presentation area minimized", null=False, blank=False, default=False)
+    show_participants_on_login = models.BooleanField("Start with participants panel expanded", null=False, blank=False, default=True)
+    show_public_chat_on_login = models.BooleanField("Start with chat panel expanded", null=False, blank=False, default=True)
+    
     moderator_pw = models.CharField(max_length=100, blank=True, null=True)
     attendee_pw = models.CharField(max_length=100, blank=True, null=True)
 
@@ -178,6 +186,14 @@ class Room(models.Model):
             params['guest'] = 'false' if as_moderator else 'true'
             params['redirect'] = "true"
             params['joinViaHtml5'] = "true"
+            params['userdata-bbb_skip_check_audio'] = "true" if self.skip_echo_test else "false"
+            params['userdata-bbb_auto_share_webcam'] = "true" if self.auto_share_webcam else "false"
+            params['userdata-bbb_hide_presentation'] = "true" if self.hide_presentation else "false"
+            params['userdata-bbb_listen_only_mode'] = "true" if self.listen_only_mode else "false"
+            params['userdata-bbb_auto_swap_layout'] = "true" if self.auto_swap_layout else "false"
+            params['userdata-bbb_show_participants_on_login'] = "true" if self.show_participants_on_login else "false"
+            params['userdata-bbb_show_public_chat_on_login'] = "true" if self.show_public_chat_on_login else "false"
+            
             return bbb_apiurl(self.server.url, self.server.get_secret(), "join", params)
 
     def is_running(self):

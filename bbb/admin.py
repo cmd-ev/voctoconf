@@ -14,6 +14,7 @@ class RoomAdmin(admin.ModelAdmin):
         ('Joining', {'fields': ('moderators', 'yolomode', 'guest_policy', 'max_participants', 'mute_on_start', 'start_as_guest')}),
         ('Branding', {'fields': ('logo', 'welcome_msg', 'slides')}),
         ('Lockdown', {'fields': ('lock_cams', 'lock_mics', 'lock_private_chat', 'lock_public_chat', 'lock_shared_notes', 'lock_layout')}),
+        ('Advanced', {'fields': ('skip_echo_test', 'auto_share_webcam', 'hide_presentation', 'listen_only_mode', 'auto_swap_layout', 'show_participants_on_login', 'show_public_chat_on_login')}),
     )
 
 admin.site.register(Room, RoomAdmin)
