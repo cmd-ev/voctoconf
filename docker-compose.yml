@@ -7,6 +7,7 @@ services:
     command: gunicorn voctoconf.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - django_static:/app/_static
+      - django_media:/app/_media
       - ./_db.sqlite3:/app/_db.sqlite3
       - ./_bbb_secrets:/app/_bbb_secrets
     labels:
@@ -40,6 +41,7 @@ services:
     restart: always
     volumes:
       - django_static:/app/_static
+      - django_media:/app/_media
       - ./nginx.conf:/etc/nginx/nginx.conf
     networks:
       - default
@@ -60,6 +62,7 @@ services:
     command: '/app/cron.sh'
     volumes:
       - django_static:/app/_static
+      - django_media:/app/_media
       - ./_db.sqlite3:/app/_db.sqlite3
       - ./_bbb_secrets:/app/_bbb_secrets
       - '/etc/localtime:/etc/localtime:ro'
@@ -70,6 +73,7 @@ services:
 
 volumes:
   django_static:
+  django_media:
 
 networks:
   default:
