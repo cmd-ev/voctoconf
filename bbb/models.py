@@ -253,7 +253,7 @@ class Room(models.Model):
         if self.slides:
             post_data = '<modules>'
             post_data += '<module name="presentation">'
-            post_data += '<document url="%s" filename="default.pdf"/>' % self.slides.url
+            post_data += '<document url="%s%s" filename="default.pdf"/>' % (settings.BASE_URL, self.slides.url)
             post_data += '</module>'
             post_data += '</modules>'
             print(post_data)
