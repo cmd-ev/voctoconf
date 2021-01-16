@@ -21,7 +21,8 @@ RUN apk add  \
             postgresql-dev \
 	    mariadb-dev \
 	    jpeg-dev \
-	    freetype-dev
+	    freetype-dev \
+	    gettext
 
 # Install dependencies
 ADD requirements.txt /app/requirements.txt

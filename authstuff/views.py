@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse
 import traceback
 from .forms import LoginForm, RegisterForm, NameForm
 from django.shortcuts import get_object_or_404
@@ -73,9 +72,9 @@ def login_view(request):
                     login(request, user)
                     return redirect(request.GET.get("next") if request.GET.get("next") is not None else "/event")
                 else:
-                    form.add_error(None, "Please enter a correct username and password.\nNote that both fields may be case-sensitive.")
+                    form.add_error(None, _("Please enter a correct username and password.\nNote that both fields may be case-sensitive."))
             except:
-                form.add_error(None, "An exception occured during authentication... this is weird... we're looking into it...")
+                form.add_error(None, _("An exception occured during authentication... this is weird... we're looking into it..."))
                 traceback.print_exc()
     else:
         form = LoginForm()

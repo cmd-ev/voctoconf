@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-15 23:58+0000\n"
+"PO-Revision-Date: 2021-01-16 01:00+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: authstuff/forms.py:15 authstuff/forms.py:39
+msgid "I've read and agree to the privacy policy"
+msgstr "Ich habe die Datenschutzerklärung gelesen und akzeptiert."
+
+#: authstuff/forms.py:22
+msgid "Usernames can only consist of 23 characters or less"
+msgstr "Der Benutzername darf nur aus bis zu 23 Zeichen bestehen"
+
+#: authstuff/forms.py:24
+msgid "Username can not start with guest- prefix"
+msgstr "Der Benutzername darf nicht mit guest- beginnen"
+
+#: authstuff/forms.py:26 authstuff/forms.py:48
+msgid "rly?!"
+msgstr "rly?!"
+
+#: authstuff/forms.py:28
+msgid ""
+"Username can only consist of lowercase letters and numbers, dashes and "
+"underscores :)"
+msgstr ""
+"Der Benutzername darf nur Kleinbuchstaben, Zahlen, Striche und Unterstriche "
+"enthalten"
+
+#: authstuff/forms.py:30
+msgid "User with that username already exists."
+msgstr "Ein Benutzer mit diesem Namen existiert bereits"
+
+#: authstuff/forms.py:32 authstuff/forms.py:52
+msgid "You need to accept the privacy policy."
+msgstr "Du musst den Datenschutzbestimmungen zustimmen."
+
+#: authstuff/forms.py:46
+msgid "Names can only consist of 17 characters or less"
+msgstr "Namen können nur maximal 17 Zeichen lang sein"
+
+#: authstuff/forms.py:50
+msgid ""
+"Names can only consist of lowercase letters and numbers, dashes and "
+"underscores :)"
+msgstr ""
+"Namen dürfen nur Kleinbuchstaben, Zahlen, Striche und Unterstriche enthalten"
+
+#: authstuff/views.py:75
+msgid ""
+"Please enter a correct username and password.\n"
+"Note that both fields may be case-sensitive."
+msgstr ""
+"Bitte gib einen korrekten Benutzernamen und Passwort ein.\n"
+"Bitte berücksichtige Groß-/Kleinschreibung."
+
+#: authstuff/views.py:77
+msgid ""
+"An exception occured during authentication... this is weird... we're looking "
+"into it..."
+msgstr "Es ist ein Fehler bei der Anmeldung aufgetreten... das ist merkwürdig... wir schauen uns das an..."
+
+#: chat/models.py:9
+msgid "system_message"
+msgstr "Systemnachricht"
+
+#: chat/models.py:10
+msgid "chat_message"
+msgstr "Chatnachricht"
+
+#: chat/models.py:11
+msgid "whisper_message"
+msgstr "Private Nachricht"
