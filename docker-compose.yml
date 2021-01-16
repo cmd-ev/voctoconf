@@ -49,10 +49,10 @@ services:
     labels:
       traefik.enable: "true"
       traefik.docker.network: "web"
-      traefik.http.routers.voctoconfstatic.rule: "Host(`virtual.piandmore.de`) && PathPrefix(`/static`)"
+      traefik.http.routers.voctoconfstatic.rule: "Host(`virtual.piandmore.de`) && (PathPrefix(`/static`) || PathPrefix(`/media`))"
       traefik.http.routers.voctoconfstatic.entrypoints: "web"
       traefik.http.routers.voctoconfstatic.middlewares: "redirect-to-https@file, add-sts-with-subdomains@file"
-      traefik.http.routers.voctoconfstaticsecure.rule: "Host(`virtual.piandmore.de`) && PathPrefix(`/static`)"
+      traefik.http.routers.voctoconfstaticsecure.rule: "Host(`virtual.piandmore.de`) && (PathPrefix(`/static`) || PathPrefix(`/media`))"
       traefik.http.routers.voctoconfstaticsecure.tls.certresolver: "le"
       traefik.http.routers.voctoconfstaticsecure.entrypoints: "websecure"
       traefik.http.routers.voctoconfstaticsecure.middlewares: "add-sts-with-subdomains@file"
